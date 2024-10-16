@@ -79,6 +79,7 @@ if uploaded_file is not None:
 # Buttons for different actions
 submit1 = st.button("Tell me about the resume")
 submit2 = st.button("Percentage match")
+submit3 = st.button("How can I improve my Skills?")
 
 # Prompt templates
 input_prompt1 = """
@@ -91,6 +92,11 @@ input_prompt2 = """
 You are a skilled Applicant Tracking System (ATS) scanner with expertise in evaluating resumes against job descriptions. 
 Analyze the uploaded resume in comparison to the provided job description and give a detailed report on the percentage match. 
 Provide insights on how well the resume aligns with the job requirements and suggest any missing or misaligned qualifications.
+"""
+input_prompt3 = """
+You are an experienced Technical Human Resource Manager specializing in talent acquisition and resume evaluation. 
+Review the uploaded resume and suggest the user how they can improve their skills relevance to the provided job description. 
+Please format your response as a professional summary.
 """
 
 # When the first button is pressed
@@ -110,6 +116,16 @@ elif submit2:
         pdf_content = input_pdf_setup(uploaded_file)
         if pdf_content:
             response = get_gemini_response(input_text, pdf_content, input_prompt2)
+            st.subheader("The Response is")
+            st.write(response)
+    else:
+        st.write("Please upload the resume")
+        
+elif submit3:
+    if uploaded_file is not None:
+        pdf_content = input_pdf_setup(uploaded_file)
+        if pdf_content:
+            response = get_gemini_response(input_text, pdf_content, input_prompt3)
             st.subheader("The Response is")
             st.write(response)
     else:

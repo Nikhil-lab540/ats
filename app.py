@@ -102,31 +102,34 @@ Please format your response as a professional summary.
 # When the first button is pressed
 if submit1:
     if uploaded_file is not None:
-        pdf_content = input_pdf_setup(uploaded_file)
-        if pdf_content:
-            response = get_gemini_response(input_text, pdf_content, input_prompt1)
-            st.subheader("The Response is")
-            st.write(response)
+        with st.spinner("Analyzing resume..."):
+            pdf_content = input_pdf_setup(uploaded_file)
+            if pdf_content:
+                response = get_gemini_response(input_text, pdf_content, input_prompt1)
+                st.subheader("The Response is")
+                st.write(response)
     else:
         st.write("Please upload the resume")
 
 # When the second button is pressed
 elif submit2:
     if uploaded_file is not None:
-        pdf_content = input_pdf_setup(uploaded_file)
-        if pdf_content:
-            response = get_gemini_response(input_text, pdf_content, input_prompt2)
-            st.subheader("The Response is")
-            st.write(response)
+        with st.spinner("Calculating percentage match..."):
+            pdf_content = input_pdf_setup(uploaded_file)
+            if pdf_content:
+                response = get_gemini_response(input_text, pdf_content, input_prompt2)
+                st.subheader("The Response is")
+                st.write(response)
     else:
         st.write("Please upload the resume")
         
 elif submit3:
     if uploaded_file is not None:
-        pdf_content = input_pdf_setup(uploaded_file)
-        if pdf_content:
-            response = get_gemini_response(input_text, pdf_content, input_prompt3)
-            st.subheader("The Response is")
-            st.write(response)
+        with st.spinner("Providing skill improvement suggestions..."):
+            pdf_content = input_pdf_setup(uploaded_file)
+            if pdf_content:
+                response = get_gemini_response(input_text, pdf_content, input_prompt3)
+                st.subheader("The Response is")
+                st.write(response)
     else:
         st.write("Please upload the resume")

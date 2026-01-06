@@ -16,7 +16,7 @@ def get_gemini_response(input_text, pdf_content, prompt):
     """
     Generates a response using the Google Gemini Generative AI model.
     """
-    model = genai.GenerativeModel('gemini-1.5-flash')
+    model = genai.GenerativeModel('gemini-2.5-flash')
     response = model.generate_content([input_text, pdf_content[0], prompt])
     return response.text
 
@@ -133,3 +133,4 @@ elif submit3:
                 st.write(response)
     else:
         st.write("Please upload the resume")
+
